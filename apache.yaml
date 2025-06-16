@@ -13,7 +13,7 @@
         groups: apache_servers
         # Explicitly set connection vars
         ansible_connection: ssh
-        ansible_user: vagrant  # Default user, override in survey if needed
+        ansible_user: "{{ runtime_user | default('vagrant') }}"
       loop: "{{ runtime_servers.split(',') }}"
 
 - name: Install Apache on runtime hosts
